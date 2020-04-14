@@ -1,13 +1,14 @@
-agent any
-stages
-{
-	stage('Just Test')
+pipeline{
+	agent any
+	stages
 	{
-		steps
+		stage('Just Test')
 		{
-			bat 'echo deu certo!'
-		}		
-		
+			steps
+			{
+				bat 'echo deu certo!'
+			}		
+			
+		}
 	}
 }
-	
