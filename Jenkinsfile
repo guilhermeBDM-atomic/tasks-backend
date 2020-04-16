@@ -80,6 +80,21 @@ pipeline{
 			}
 		}
 	}
+	post
+	{
+		always
+		{
+			junit allowEmptyResults: true, testResults: 'target/surefire-reports/*.xml, api-test/target/surefire-reports/*.xml, functional-test/target/failsafe-reports/*.xml'
+		}
+		unsuccessful
+		{
+			emailext attachLog: true, body: 'See attached log below', subject: 'Build $BUILD_NUMBER has failed', to: 'guilhermeborba79+jenkins@gmail.com'
+		}
+		unsuccessful
+		{
+			emailext attachLog: true, body: 'See attached log below', subject: 'Build is fine!!', to: 'guilhermeborba79+jenkins@gmail.com'
+		}
+	}
 }
 
  
